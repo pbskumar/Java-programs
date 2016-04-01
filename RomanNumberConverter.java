@@ -1,16 +1,33 @@
+/**
+ *  <h2>Roman number Converter</h2>
+ *  Converts Decimal numbers to Roman numbers and vice-versa
+ *  The output is printed to the console.
+ * 
+ *  @author  Brahmendra Sravan Kumar Patibandla
+ *  @since   2016-03-29
+ */
+
 import java.io.*;
 import java.util.*;
 
-/**
- * Converts Decimal numbers to Roman numbers and vice-versa.
- */
-
 public class RomanNumberConverter{
-
-	public static final int MAX_REPITITION = 3;
+	
+	/*
+	 * To assert that a Roman symbol can only repeat in for 3 times at once
+	 * XXX is valid. But, XXXX is not valid.
+	 */
+	public static final int MAX_REPITITION = 3; 
+	/*
+	 * Arrays of Roman symbols and their corresponding values
+	 */
 	static char[] symbols = {'M', 'D', 'C', 'L', 'X', 'V', 'I'};
 	static int[] values = {1000, 500, 100, 50, 10, 5, 1};
 	
+	/**
+	 * Returns the Roman Numeral reperesentation of the input integer.
+	 * @param n The integer to be converted to Roman form.
+	 * @return String This is the Roman Numeral reperesentation of the input integer.
+	 */ 
 	public static String ToRoman(int n) {
 		int repitition = 0; // Counts the number of times the symbol must be replicated.
 		String romanNum = "";
@@ -24,7 +41,22 @@ public class RomanNumberConverter{
 			System.out.println("\tDoes not exist!");
 			return null;
 		}
-			
+		
+		/*
+		 * flag is used to identify the loop. 
+		 * If i is even, the function deals with 1000, 100, 10, 1
+		 * Also, special cases like 400, 40, 4 are handled in this iteration.
+		 * Ex: for 4, the string becomes IIII which exceed the maximum repitition limit.
+		 * 	Now, to handle this, I is prefixed to the next big number (V) i.e., 4 becomes IV
+		 * 
+		 * If i is odd, the function deals with 500, 50, 5
+		 * Also, special cases like 900, 90, 4 are handled in this iteration.
+		 * Ex: for 9, the string becomes VIIII which exceed the maximum repitition limit.
+		 * 	Now, to handle this, I is prefixed to the next big number after V i.e., 9 becomes IX
+		 * 
+		 */
+		
+		
 		while(n > 0) {
 			flag = i % 2;
 			if(n >= values[i] && flag == 0)	{
@@ -58,6 +90,12 @@ public class RomanNumberConverter{
 		return romanNum;
 	}
 	
+	
+	/**
+	 * Returns the decimal reperesentation of the input Roman string.
+	 * @param s The string to be converted to decimal form.
+	 * @return int This is the integer reperesentation of the input string.
+	 */ 
 	public static int ToNumeral(String s) {
 		int num = 0;
 		int temp = 0, curCharValue, nextCharValue;
@@ -66,6 +104,12 @@ public class RomanNumberConverter{
 			System.out.println("\nEmpty!\nEnter valid Roman number (Contains only M,D,C,L,X,V,I)");
 			return -1;
 		}
+		
+		/**
+		 * Reads each character of the string. 
+		 * If decimal value of a character is greater than that of the succeeding character, 
+		 * then the value of current character is subtracted from the total value
+		 */
 		
 		for(int i = 0; i < s.length(); i++)	{
 			try {
