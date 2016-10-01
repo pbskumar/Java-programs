@@ -1,11 +1,6 @@
 /**
- *  <h2>Permutations of strings and integers</h2>
- *  All possible permutations of given set of integers or string is printed.
- *  The output is printed to the console.
- * 
- *  @author  Brahmendra Sravan Kumar Patibandla
- *  @since   2016-04-01
- *  permutation function for string [permutations()] courtesy of Princeton University
+ *  Permutations of strings and integers
+ *  
  *  URL: http://introcs.cs.princeton.edu/java/23recursion/Permutations.java.html
  */ 
 
